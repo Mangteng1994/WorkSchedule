@@ -24,7 +24,7 @@
     
     </select> 
     
-    <!-- <button @click="generateCalendar" class="generate-btn">生成排班表</button> -->
+    <!-- <button @click="generateCalendar" class="generate-btn">生成</button> -->
     
     </div> 
     
