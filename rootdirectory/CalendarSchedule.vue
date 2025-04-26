@@ -88,7 +88,7 @@
     
     currentMonth: new Date().getMonth() + 1,  // 获取当前月份（注意JavaScript中月份从0开始） 
     
-    weekDays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'], 
+    weekDays: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'], // 修改为周一开始
     
     yearOptions: Array.from({ length: 101 }, (_, i) => 2000 + i), 
     
@@ -128,7 +128,7 @@
     
     // 获取第一天是星期几 (0-6, 0表示周日) 
     
-    const firstDayOfWeek = firstDay.getDay(); 
+    const firstDayOfWeek = (firstDay.getDay() + 6) % 7; // 调整为周一开始
     
     // 初始化日历数据 
     
@@ -150,7 +150,7 @@
     
     const currentDate = new Date(year, month - 1, day); 
     
-    const dayOfWeek = currentDate.getDay(); 
+    const dayOfWeek = (currentDate.getDay() + 6) % 7; // 调整为周一开始
     
     // 如果是新的一周，添加新行 
     
