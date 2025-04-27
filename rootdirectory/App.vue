@@ -41,7 +41,7 @@
                         v-for="(day, dayIndex) in week"
                         :key="`${weekIndex}-${dayIndex}`"
                         class="calendar-cell"
-                        :class="getShiftClass(day.shift)"
+                        :class="[getShiftClass(day.shift), {'today': day.isToday}]"
                     >
                         <template v-if="day.date">
                             <div class="day-number">{{ day.date }}</div>
@@ -144,6 +144,8 @@ export default {
         generateCalendar() {
             const year = this.currentYear;
             const month = this.currentMonth;
+            const today = new Date();
+            const isCurrentMonth = today.getFullYear() === year && today.getMonth() + 1 === month;
             // 获取当月第一天和最后一天
             const firstDay = new Date(year, month - 1, 1);
             const lastDay = new Date(year, month, 0);
@@ -173,7 +175,8 @@ export default {
                 // 填充当前日期
                 currentWeek[dayOfWeek] = {
                     date: day,
-                    shift: shift
+                    shift: shift,
+                    isToday: isCurrentMonth && day === today.getDate()
                 };
             }
             // 添加最后一周
@@ -405,5 +408,10 @@ export default {
         box-sizing: border-box; /* 防止 padding 导致溢出 */
         min-width: 0; /* 覆盖之前的最小宽度 */
     }
+}
+/* 今天日期样式 */
+.today {
+    border: 2px solid #ff0000 !important;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 </style>
