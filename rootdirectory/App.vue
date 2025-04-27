@@ -411,7 +411,7 @@ export default {
 }
 /* 今天日期样式 */
 .today {
-    border: 2px solid #ff0000 !important;
+    border: 1px solid #ff0000 !important;
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 </style>
